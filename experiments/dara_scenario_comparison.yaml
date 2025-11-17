@@ -30,7 +30,8 @@ baseline_threshold: 0.3
 peak_threshold: 0.8
 
 # Vollständiger Datensatz
-# row_range: null
+start_row: 0
+# end_row: null  # null = bis zum Ende
 
 # Evaluierung
 run_evaluation: true

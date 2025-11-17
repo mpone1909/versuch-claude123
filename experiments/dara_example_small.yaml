@@ -24,8 +24,9 @@ primary_field: value
 baseline_threshold: 0.3
 peak_threshold: 0.8
 
-# Zeitfenster (optional): [start_row, end_row]
-row_range: [0, 500]
+# Zeitfenster (optional)
+start_row: 0
+end_row: 500
 
 # Evaluierung und Reporting
 run_evaluation: true

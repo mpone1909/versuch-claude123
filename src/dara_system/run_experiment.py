@@ -85,10 +85,8 @@ class ExperimentRunner:
             primary_field=experiment_config.primary_field,
             baseline_threshold=experiment_config.baseline_threshold,
             peak_threshold=experiment_config.peak_threshold,
-            anomaly_std_multiplier=experiment_config.anomaly_std_multiplier,
             create_notion_report=experiment_config.create_notion_report,
             create_gdrive_doc=experiment_config.create_gdrive_doc,
-            create_gdrive_sheet=experiment_config.create_gdrive_sheet,
         )
 
         # Erstelle Orchestrator
@@ -102,8 +100,6 @@ class ExperimentRunner:
             results = orchestrator.run_pipeline(
                 csv_file_paths=experiment_config.csv_file_paths,
                 proband_ids=experiment_config.proband_ids,
-                start_row=experiment_config.start_row,
-                end_row=experiment_config.end_row,
             )
 
             end_time = datetime.now()
@@ -173,7 +169,7 @@ class ExperimentRunner:
             "config": experiment_config.to_dict(),
             "results": {
                 "total_slices": len(aggregated_slices),
-                "total_patterns": len(analysis_result.patterns) if analysis_result else 0,
+                "total_patterns": len(getattr(analysis_result, 'patterns', analysis_result.get('patterns', []))) if analysis_result else 0,
             },
             "evaluation": evaluation_metrics.to_dict() if evaluation_metrics else None,
             "output_directory": str(output_dir),
