@@ -201,7 +201,77 @@ gdrive.create_doc_report(analysis, title="DaRa Report")
 gdrive.create_sheet_report(analysis, title="DaRa Daten")
 ```
 
+### 5. Command-Line Interface (CLI)
+
+Das System bietet ein umfassendes CLI-Tool:
+
+```bash
+# Liste verfügbare Experimente
+dara-cli list
+
+# Führe ein Experiment aus
+dara-cli run experiments/example_experiment.yaml
+
+# Zeige Ergebnisse
+dara-cli show-results
+
+# Erstelle Beispiel-Konfiguration
+dara-cli create-example experiments/my_experiment.yaml
+
+# Validiere Konfiguration
+dara-cli validate experiments/my_experiment.yaml
+```
+
+### 6. Experiment-Framework
+
+Definiere Experimente in YAML/JSON:
+
+```yaml
+name: my_experiment
+description: Beschreibung des Experiments
+csv_file_paths:
+  - data/proband_1.csv
+  - data/proband_2.csv
+proband_ids:
+  - P1
+  - P2
+primary_field: value
+baseline_threshold: 0.3
+peak_threshold: 0.8
+run_evaluation: true
+```
+
+Führe aus und erhalte automatisch:
+- Analyse-Ergebnisse
+- Evaluations-Metriken (Coverage, Pattern-Counts, Anomalie-Rate)
+- Strukturierte Reports in `results/<experiment_name>/`
+
 ## Konfiguration
+
+### System-Konfiguration
+
+Das System nutzt ein zentrales Konfigurationssystem:
+
+```python
+from dara_system.config import get_config
+
+config = get_config()
+
+# Zugriff auf Teilkonfigurationen
+print(config.paths.data_dir)
+print(config.dara.baseline_threshold)
+print(config.notion.enabled)
+```
+
+Konfiguration via `.env`-Datei (siehe `.env.example`):
+
+```bash
+# Kopiere Beispiel-Datei
+cp .env.example .env
+
+# Bearbeite .env mit deinen Werten
+nano .env
+```
 
 ### Umgebungsvariablen
 
@@ -232,6 +302,28 @@ pytest --cov=dara_system --cov-report=html
 pytest tests/test_vector_store.py -v
 ```
 
+## Observability
+
+Das System bietet umfassendes Logging und Metriken:
+
+```python
+from dara_system.observability import get_logger, timed_block, get_metrics
+
+# Strukturiertes Logging
+logger = get_logger("my_module")
+logger.info("Processing started")
+logger.log_event("data_loaded", {"rows": 1000})
+
+# Performance-Tracking
+with timed_block("data_processing", logger):
+    # ... your code ...
+    pass
+
+# Metriken abrufen
+metrics = get_metrics()
+print(metrics)
+```
+
 ## Dokumentation
 
 Weitere detaillierte Dokumentation finden Sie unter `docs/`:
@@ -240,6 +332,7 @@ Weitere detaillierte Dokumentation finden Sie unter `docs/`:
 - **AGENTS.md**: Detaillierte Agent-Dokumentation
 - **DATAFLOW.md**: Datenfluss durch das System
 - **PROMPTS_REGISTRY.md**: Mapping von Prompts zu Modulen
+- **THESIS_MAPPING.md**: Zuordnung zu Masterarbeit-Sektionen
 
 ## Entwicklung
 
@@ -286,5 +379,11 @@ DaRa Research Team
 - ✅ Process Analysis Agent mit Pattern Recognition
 - ✅ Notion & Google Drive Reporter
 - ✅ LangGraph-Orchestrierung
+- ✅ Konfigurationssystem mit Pydantic
+- ✅ Experiment-Framework & Evaluation
+- ✅ Observability (Logging & Metriken)
+- ✅ Command-Line Interface (CLI)
+- ✅ API-Stubs für zukünftige REST-API
+- ✅ GitHub Actions CI/CD
 - ✅ Umfassende Unit-Tests
-- ✅ Vollständige Dokumentation
+- ✅ Vollständige Dokumentation inkl. Thesis-Mapping

@@ -1,0 +1,46 @@
+# Beispiel-Experiment-Konfiguration für das DaRa-System
+
+name: example_experiment
+description: Beispiel-Experiment mit 3 Probanden zur Demonstration der Pipeline
+author: DaRa Research Team
+
+# Daten-Auswahl
+csv_file_paths:
+  - data/proband_1.csv
+  - data/proband_2.csv
+  - data/proband_3.csv
+
+proband_ids:
+  - P1
+  - P2
+  - P3
+
+# Zeitbereich (Zeilen)
+start_row: 0
+end_row: 2000  # null für "bis zum Ende"
+
+# Analyse-Parameter
+primary_field: value
+additional_fields:
+  - score
+
+baseline_threshold: 0.3
+peak_threshold: 0.8
+anomaly_std_multiplier: 2.5
+min_valid_probands: 2
+
+# Reporting (deaktiviert für Beispiel)
+create_notion_report: false
+create_gdrive_doc: false
+create_gdrive_sheet: false
+
+# Evaluation
+run_evaluation: true
+evaluation_metrics:
+  - basic_stats
+  - pattern_counts
+  - anomaly_counts
+
+# Output
+# output_dir: null  # null = results/<experiment_name>
+save_intermediate_results: false
