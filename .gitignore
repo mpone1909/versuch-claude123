@@ -54,12 +54,17 @@ dmypy.json
 
 # Logs
 *.log
-logs/
+logs/*
+!logs/.gitkeep
 
 # Data directories
 data/
 *.csv
 *.xlsx
+
+# Results (experiments)
+results/*
+!results/.gitkeep
 
 # Environment variables
 .env
