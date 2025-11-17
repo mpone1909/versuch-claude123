@@ -60,8 +60,8 @@ class ExperimentResultResponse:
     duration_seconds: float
     total_slices: int
     total_patterns: int
-    evaluation: Optional[Dict[str, Any]] = None
     output_directory: str
+    evaluation: Optional[Dict[str, Any]] = None
 
 
 # Geplante API-Endpunkte
