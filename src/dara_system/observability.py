@@ -322,7 +322,9 @@ class PipelineLogger:
         if details:
             self.logger.debug(f"Schritt-Details: {details}")
 
-        increment_counter("pipeline.steps", tags={"pipeline": self.pipeline_name, "step": step_name})
+        increment_counter(
+            "pipeline.steps", tags={"pipeline": self.pipeline_name, "step": step_name}
+        )
 
     def log_error(self, error: Exception, context: str = ""):
         """Loggt einen Pipeline-Fehler."""

@@ -8,11 +8,12 @@ Definiert Strukturen für:
 """
 
 import json
-import yaml
-from dataclasses import dataclass, field, asdict
-from pathlib import Path
-from typing import List, Optional, Dict, Any
+from dataclasses import asdict, dataclass, field
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import yaml
 
 
 @dataclass
