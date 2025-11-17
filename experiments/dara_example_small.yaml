@@ -1,0 +1,33 @@
+# DARA Small Example Experiment
+# Ein kleines Beispiel-Experiment mit 2 Probanden und begrenztem Zeitfenster
+
+name: dara_small_example
+description: |
+  Kleines DARA-Experiment mit 2 Probanden.
+  Nutzt synthetische Daten zur Demonstration der Pipeline.
+  Zeitfenster: 500 Zeilen
+
+# CSV-Dateien (werden mit synthetic_data_generator erstellt)
+csv_file_paths:
+  - data/synthetic_example/proband_1.csv
+  - data/synthetic_example/proband_2.csv
+
+# Proband-IDs
+proband_ids:
+  - P1
+  - P2
+
+# Primäres Analysefeld
+primary_field: value
+
+# Analyse-Parameter
+baseline_threshold: 0.3
+peak_threshold: 0.8
+
+# Zeitfenster (optional): [start_row, end_row]
+row_range: [0, 500]
+
+# Evaluierung und Reporting
+run_evaluation: true
+create_notion_report: false
+create_gdrive_doc: false

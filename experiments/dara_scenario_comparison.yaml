@@ -1,0 +1,45 @@
+# DARA Scenario Comparison Experiment
+# Vergleicht verschiedene Aktivitäts-Szenarien
+
+name: dara_scenario_comparison
+description: |
+  Vergleichs-Experiment für verschiedene Aktivitäts-Szenarien:
+  - Baseline (normale Aktivität)
+  - High Activity (erhöhte Aktivität mit mehr Peaks)
+  - Low Activity (reduzierte Aktivität)
+
+  Nutzt synthetische Daten mit unterschiedlichen Charakteristiken.
+
+# CSV-Dateien aus scenario_baseline
+csv_file_paths:
+  - data/synthetic_scenarios/scenario_baseline/baseline_1.csv
+  - data/synthetic_scenarios/scenario_baseline/baseline_2.csv
+  - data/synthetic_scenarios/scenario_baseline/baseline_3.csv
+
+# Proband-IDs
+proband_ids:
+  - Baseline_P1
+  - Baseline_P2
+  - Baseline_P3
+
+# Primäres Analysefeld
+primary_field: value
+
+# Analyse-Parameter (Standard)
+baseline_threshold: 0.3
+peak_threshold: 0.8
+
+# Vollständiger Datensatz
+# row_range: null
+
+# Evaluierung
+run_evaluation: true
+
+# Reporting
+create_notion_report: false
+create_gdrive_doc: false
+
+# Zusätzliche Metadata für Vergleiche
+metadata:
+  scenario_type: baseline
+  comparison_group: activity_levels
