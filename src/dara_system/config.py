@@ -24,10 +24,10 @@ class PathConfig(BaseSettings):
         default_factory=lambda: Path(__file__).parent.parent.parent,
         description="Projekt-Root-Verzeichnis",
     )
-    data_dir: Path = Field(default=None, description="Verzeichnis für Eingabedaten")
-    experiments_dir: Path = Field(default=None, description="Verzeichnis für Experiment-Configs")
-    results_dir: Path = Field(default=None, description="Verzeichnis für Ergebnisse")
-    logs_dir: Path = Field(default=None, description="Verzeichnis für Logs")
+    data_dir: Optional[Path] = Field(default=None, description="Verzeichnis für Eingabedaten")
+    experiments_dir: Optional[Path] = Field(default=None, description="Verzeichnis für Experiment-Configs")
+    results_dir: Optional[Path] = Field(default=None, description="Verzeichnis für Ergebnisse")
+    logs_dir: Optional[Path] = Field(default=None, description="Verzeichnis für Logs")
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

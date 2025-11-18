@@ -11,7 +11,7 @@ import argparse
 import shutil
 from pathlib import Path
 from datetime import datetime, timedelta
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 import logging
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
